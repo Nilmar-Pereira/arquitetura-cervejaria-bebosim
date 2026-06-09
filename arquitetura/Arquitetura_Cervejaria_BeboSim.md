@@ -11,7 +11,7 @@ perfis de usuario, separando claramente as responsabilidades de interface, contr
 **Decisão:**
 Adotar o estilo arquitetural MVC (Model-View-Controller), separando a aplicacão em camadas de apresentação (View), controle (Controller) e lógica de negócio e dados (Model).
 
-**Status:** Proposto
+**Status:** Aceita
 
 **Consequências:**
 - Separação clara de responsabilidades entre as camadas;
@@ -28,7 +28,7 @@ Necessidade de persistir dados de múltiplas entidades inter-relacionadas como f
 **Decisão:**
 Utilizar o MySQL como sistema gerenciador de banco de dados relacional para armazenamento e recuperação de todos os dados do sistema.
 
-**Status:** Proposto
+**Status:** Aceita
 
 **Consequências:**
 - solução gratuita e open-source;
@@ -45,7 +45,7 @@ Um pedido depende obrigatoriamente de produto, vendedor e cliente previamente ca
 **Decisão:**
 Implementar validação de dependências no Controller antes de persistir os dados, reforçadas por chaves estrangeiras no banco de dados MySQL.
 
-**Status:** Proposto
+**Status:** Aceita
 
 **Consequências:**
 - Consistência e integridade dos dados de venda garantidas;
@@ -62,7 +62,7 @@ O sistema deve consolidar dados de múltiplos módulos para gerar relatórios ge
 **Decisão:**
 Implementar a geração de relatórios no Model com consultas SQL otimizadas, renderizando os resultados diretamente no browser via View.
 
-**Status:** Proposto
+**Status:** Aceita
 
 **Consequências:**
 - Centralização da lógica de relatórios facilita manutenção;
@@ -78,7 +78,7 @@ O módulo de campanhas armazena dados financeiros sensíveis como valor previsto
 **Decisão:**
 Implementar validações no Controller para datas e valores financeiros, vinculando cada campanha a um produto existente no sistema.
 
-**Status:** Proposto
+**Status:** Aceita
 
 **Consequências:**
 - Validações evitam cadastros inconsistentes;
@@ -97,7 +97,7 @@ rente de Unidade e Atendente), cada um com permissões distintas
 Implementar a View com componentes HTML/CSS/JavaScript padr ̃ao, com o Controller
 verificando o perfil autenticado e disponibilizando apenas as funcionalidades permitidas.
 
-**Status:** Proposto
+**Status:** Aceita
 
 **Consequências:**
 - Compatibilidade com diferentes navegadores garantida;
@@ -115,7 +115,7 @@ do serviço, conforme exigido pelos requisitos NF004 e NF005.
 **Decisão:**
 Adotar  ́ındices nos campos de busca frequente no MySQL e estruturar o sistema de forma modular no MVC, permitindo atualizações por módulo sem afetar os demais.
 
-**Status:** Proposto
+**Status:** Aceita
 
 **Consequências:**
 - Redução do tempo de resposta nas operações de pesquisa;
@@ -132,7 +132,7 @@ Cada embalagem deve estar obrigatoriamente vinculada a um produto cadastrado, co
 **Decisão:**
 Implementar validação no Controller para garantir que o produto vinculado exista, utilizando chave estrangeira no banco para reforçar a integridade do vínculo.
 
-**Status:** Proposto
+**Status:** Aceita
 
 **Consequências:**
 - Integridade do vínculo produto-embalagem garantida;

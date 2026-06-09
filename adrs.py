@@ -52,33 +52,22 @@ def get_adrs():
     decisoes = []
 
     carregadas, adrs = iniciar_adrs()
-    if carregadas and isinstance(adrs, dict):  # <- adicione o isinstance
-        if carregadas:
-            for adr in adrs.values():
-                decisoes.append({
-                    "id": adr["id"],
-                    "titulo": adr["titulo"]
-                })
+    if carregadas and isinstance(adrs, dict):  
+        for adr in adrs.values():
+            decisoes.append({
+                "id": adr["id"],
+                "titulo": adr["titulo"]
+            })
 
     return decisoes
 
-@mcp.tool(name="decisao_arquitetural", title="lista detalhes de uma decisao arquitetural", description="retorna a lista de detalhes sobre uma decisao arquitetural")
-def get_detalhes_adr(id_adr):
-    detalhes = {}    
-    
-    carregadas, adrs = iniciar_adrs()
-    if carregadas:
-        detalhes = adrs[id_adr]
-
-    return detalhes
-
 # Tool com IA
 @mcp.tool(
-    name="justificativa arquitetural",
+    name="justificativa_arquitetural",
     title="Gerador de Justificativa Arquitetural",
     description="Dado o ID de uma ADR, utiliza IA para gerar uma justificativa formal e detalhada explicando por que aquela decisão arquitetural foi tomada"
 )
-def get_justificativa(id_adr: str, usar_mock: bool = True):
+def get_justificativa(id_adr: str):
     carregadas, adrs = iniciar_adrs()
     if not carregadas or not isinstance(adrs, dict):
         return {"erro": "ADRs não carregadas"}
@@ -135,40 +124,10 @@ def validar_formato_adrs():
         "incompletas": total - completas,
         "detalhes": relatorio
     }
-   
-"""    
-if __name__ == "__main__":
-    try:
-        iniciar_adrs()
-
-        print("=== LISTA DE ADRs ===")
-        print(get_adrs())
-
-        print("\n=== DETALHES ADR-01 ===")
-        print(get_detalhes_adr("ADR-01"))
-
-        print("\n=== VALIDAÇÃO ===")
-        print(validar_formato_adrs())
-
-    except Exception as e:
-        raise
-"""
-"""
-@mcp.tool(name="recomendacoes", title="recomendacoes para uma decisao arquitetural", description="dado o identificador de uma decisao arquitetural retorna dicas e recomendacoes de boas praticas sobre como implementar")
-def get_recomendacoes(id_adr, linguagem_framework):
-    recomendacoes = {}    
-    
-    carregadas, adrs = iniciar_adrs()
-    if carregadas:
-        recomendacoes = ia_recomendacoes_para_adr(conectar_ia(), adrs[id_adr], linguagem_framework)
-
-    return recomendacoes   
-    """ 
 
 if __name__ == "__main__":
     try:
         iniciar_adrs()
-        # print(get_adrs())
         mcp.run()
     except Exception as e:
         raise

@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 import os
 import re
 
-MODEL = "gemini-2.5-flash-lite"
+MODEL = "gemini-2.5-flash"
 
 def conectar_gemini(key):
     client = genai.Client(api_key=key)
@@ -35,24 +35,17 @@ def ia_justificativa_para_adr(connection, adr):
     - Cada recomendação deve ser concisa, com texto breve e claro 
     """
 
-    #response = connection.chat.completions.create(
     response = connection.models.generate_content(
-        model="gemini-2.5-flash-lite",
+        model="gemini-2.5-flash",
         contents=prompt
-        #messages=[
-            #{"role": "user", "content": prompt}
-       # ]
     )
 
-    #if response and len(response.choices):
     justificativas = response.text
-        #recomendacoes = response.choices[0].message.content
     justificativas = re.search(r'{.*}', justificativas, re.DOTALL)
     if justificativas:
         justificativas = justificativas.group(0)
-    justificativas = json.loads(justificativas)
 
-    return justificativas
+    return json.load(justificativas)
 
 if __name__ == "__main__":
     load_dotenv()

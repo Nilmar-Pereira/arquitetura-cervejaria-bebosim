@@ -10,7 +10,6 @@ Você é o arquivo de software do sistema Cervejaria BeboSim.
 
 Você tem acesso às seguintes ferramentas:
 - decisoes_arquiteturais: lista todas as ADRs disponíveis
-- decisao_arquitetural: retorna detalhes de uma ADR específica pelo ID
 - justificativa_arquitetural: gera uma justificativa formal para uma ADR usando IA
 - validar_adrs: valida se todas as ADRs possuem os campos obrigatórios
 
@@ -42,7 +41,6 @@ async def get_response(ai_connection, mensagem):
             while True:
                 response = ai_connection.models.generate_content(
                     model="gemini-2.0-flash",
-                    #model="gemini-2.5-flash-lite",
                     contents=historico
                 )
 
@@ -73,25 +71,9 @@ if __name__ == "__main__":
     gemini_key = os.getenv("GEMINI_API_KEY")
     ai_connection = conectar_gemini(gemini_key)
 
-    
     # PROMPT 1 — ferramenta base: listar ADRs
     print("\n" + "="*50)
     print("PROMPT 1: Listar ADRs")
     print("="*50)
     asyncio.run(get_response(ai_connection,
         "liste todas as decisões arquiteturais disponíveis"))
-
-"""     # PROMPT 2 — ferramenta 2: validar formato
-    print("\n" + "="*50)
-    print("PROMPT 2: Validar ADRs")
-    print("="*50)
-    asyncio.run(get_response(ai_connection,
-        "valide o formato de todas as ADRs e me diga quais estão completas")) """
-    
-
-"""     # PROMPT 3 — ferramenta 1: justificativa com IA
-    print("\n" + "="*50)
-    print("PROMPT 3: Justificativa ADR-01")
-    print("="*50)
-    asyncio.run(get_response(ai_connection,
-        "gere uma justificativa formal para a decisão arquitetural ADR-01")) """
