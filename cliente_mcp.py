@@ -85,10 +85,10 @@ if __name__ == "__main__":
     asyncio.run(get_response(ai_connection,
         "valide o formato de todas as ADRs e me diga quais estão completas"))
     
-
     # PROMPT 3 — ferramenta 1: justificativa com IA
     print("\n" + "="*50)
     print("PROMPT 3: Justificativa ADR-01")
     print("="*50)
     asyncio.run(get_response(ai_connection,
-        "gere uma justificativa formal para a decisão arquitetural ADR-01")) 
+        "gere uma justificativa formal para a decisão arquitetural ADR-01"))  
+

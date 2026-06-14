@@ -59,6 +59,7 @@ Implementar validação de dependências no Controller antes de persistir os dad
 **Contexto:**
 O sistema deve consolidar dados de múltiplos módulos para gerar relatórios gerenciais filtráveis por período, exigindo consultas complexas ao banco de dados.
 
+
 **Decisão:**
 Implementar a geração de relatórios no Model com consultas SQL otimizadas, renderizando os resultados diretamente no browser via View.
 
