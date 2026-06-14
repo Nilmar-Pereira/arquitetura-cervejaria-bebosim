@@ -45,20 +45,5 @@ def ia_justificativa_para_adr(connection, adr):
     if justificativas:
         justificativas = justificativas.group(0)
 
-    return json.load(justificativas)
+    return json.loads(justificativas)
 
-if __name__ == "__main__":
-    load_dotenv()
-    gemini_key = os.getenv("GEMINI_API_KEY")
-    connection = conectar_gemini(gemini_key)
-    
-    adr_teste = {
-    "id": "ADR-01",
-    "titulo": "Adoção do Estilo Arquitetural MVC",
-    "contexto": "Necessidade de organizar um sistema web com múltiplos módulos CRUD e diferentes perfis de usuário, separando claramente as responsabilidades de interface, controle e dados.",
-    "decisao": "Adotar o estilo arquitetural MVC (Model-View-Controller), separando a aplicação em camadas de apresentação (View), controle (Controller) e lógica de negócio e dados (Model)."
-    }
-    
-    print("Testando com IA real")
-    resultado = ia_justificativa_para_adr(connection, adr_teste)
-    print(f"Justificativa: {resultado}")
